@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "implementation": {
+    "model": "gpt-6-sol",
+    "reasoningEffort": "medium",
+    "promptVersion": "implementation-v1",
+    "promptPath": "prompts/implementation-v1.md",
+    "requirementsPath": "docs/room-booking-benchmark.md",
+    "skipGitRepositoryCheck": true,
+    "skipHostSkillDiscovery": true,
+    "useSharedDaemon": false,
+    "codexHomeIsolation": "temporary-auth-only",
+    "disabledFeatures": ["plugins", "apps", "multi_agent"],
+    "approvalMode": "approve-for-me",
+    "timeoutMinutes": 180
+  },
+  "bugfix": {
+    "model": "gpt-6-sol",
+    "reasoningEffort": "medium",
+    "promptVersion": "buggfix-v1",
+    "promptPath": "prompts/buggfix-v1.md",
+    "skipGitRepositoryCheck": true,
+    "skipHostSkillDiscovery": true,
+    "useSharedDaemon": false,
+    "codexHomeIsolation": "temporary-auth-only",
+    "disabledFeatures": ["plugins", "apps", "multi_agent"],
+    "approvalMode": "approve-for-me",
+    "timeoutMinutes": 120
+  }
+}
