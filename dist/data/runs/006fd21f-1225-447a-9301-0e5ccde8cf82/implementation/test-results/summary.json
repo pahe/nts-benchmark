@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "source": "trx",
+  "trxFiles": 1,
+  "total": 9,
+  "passed": 9,
+  "failed": 0,
+  "skipped": 0,
+  "categories": {
+    "businessLogic": {
+      "name": "Affärslogik",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    "blazor": {
+      "name": "Blazor och komponenter",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    "api": {
+      "name": "Web API och integration",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "name": "Webbläsarflöden",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "accessibility": {
+      "name": "Tillgänglighet",
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0
+    },
+    "concurrency": {
+      "name": "Samtidighet och gränsfall",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "uncategorized": {
+      "name": "Okategoriserade tester",
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0
+    }
+  }
+}

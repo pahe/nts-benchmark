@@ -1,0 +1,65 @@
+@page "/bookings"
+@using RoomBooking.Web.Contracts
+@using RoomBooking.Web.Services
+@inject IBookingService BookingsService
+
+<PageTitle>Bokningar</PageTitle>
+<h1>Bokningar</h1>
+<p><a href="/bookings/new">Skapa bokning</a></p>
+<div class="filters">
+    <label for="filter-room">Rum</label>
+    <select id="filter-room" value="@RoomId" @onchange="RoomChanged">
+        <option value="">Alla rum</option>
+        @foreach (var room in Rooms) { <option value="@room.Id">@room.Name</option> }
+    </select>
+    <label for="filter-date">Datum (UTC)</label>
+    <input id="filter-date" type="date" value="@Date" @onchange="DateChanged" />
+</div>
+@if (Loading) { <p role="status">Laddar bokningar…</p> }
+else if (Error is not null) { <p role="alert">@Error</p> }
+else if (Items.Count == 0) { <p>Inga bokningar matchar filtret.</p> }
+else
+{
+    <table>
+        <thead><tr><th>Rubrik</th><th>Rum</th><th>Bokare</th><th>Start (UTC)</th><th>Slut (UTC)</th><th>Status</th></tr></thead>
+        <tbody>
+        @foreach (var item in Items)
+        {
+            <tr class="@(item.Status == "cancelled" ? "cancelled" : "")">
+                <td><a href="/bookings/@item.Id">@item.Title</a></td><td>@item.RoomName</td><td>@item.BookedBy</td>
+                <td>@item.StartTime.ToString("yyyy-MM-dd HH:mm")</td><td>@item.EndTime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@(item.Status == "active" ? "Aktiv" : "Avbokad")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IReadOnlyList<RoomDto> Rooms = [];
+    private IReadOnlyList<BookingDto> Items = [];
+    private string? RoomId;
+    private string? Date;
+    private string? Error;
+    private bool Loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try { Rooms = await BookingsService.GetRoomsAsync(); await LoadAsync(); }
+        catch { Loading = false; Error = "Bokningarna kunde inte hämtas."; }
+    }
+    private async Task RoomChanged(ChangeEventArgs e) { RoomId = e.Value?.ToString(); await LoadAsync(); }
+    private async Task DateChanged(ChangeEventArgs e) { Date = e.Value?.ToString(); await LoadAsync(); }
+    private async Task LoadAsync()
+    {
+        Loading = true; Error = null;
+        try
+        {
+            Items = await BookingsService.GetBookingsAsync(new BookingFilter(
+                int.TryParse(RoomId, out var id) ? id : null,
+                DateOnly.TryParse(Date, out var date) ? date : null));
+        }
+        catch { Error = "Bokningarna kunde inte hämtas."; }
+        finally { Loading = false; }
+    }
+}

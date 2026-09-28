@@ -1,0 +1,5 @@
+@page "/bookings/{Id:int}"
+@inject BookingService Service
+@inject NavigationManager Nav
+@if(b is null){<p aria-live="polite">@message</p>}else{<h1>@b.Title</h1><dl><dt>Rum</dt><dd>@b.RoomName</dd><dt>Bokare</dt><dd>@b.BookedBy</dd><dt>Tid</dt><dd>@b.StartTime.ToLocalTime() – @b.EndTime.ToLocalTime()</dd><dt>Status</dt><dd>@b.Status</dd></dl><a class="button" href="/bookings/@b.Id/edit">Redigera</a> @if(b.Status==BookingStatus.Active){<button @onclick="Cancel">Avboka</button>}<p><a href="/bookings">Tillbaka</a></p>}
+@code{[Parameter]public int Id{get;set;} BookingResponse? b;string message="Laddar…";protected override async Task OnParametersSetAsync(){b=await Service.GetAsync(Id);message=b is null?"Bokningen hittades inte.":"";}async Task Cancel(){if(b is null)return;await Service.CancelAsync(b.Id);b=await Service.GetAsync(b.Id);}}

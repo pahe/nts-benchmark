@@ -1,0 +1,947 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-09-28T16:54:13.1854660+00:00",
+  "publicationProfile": "public",
+  "runs": [
+    {
+      "id": "54448bdf-fd40-4c05-849e-8387fe757cea",
+      "createdAtUtc": "2026-09-28T17:58:37.3895078+02:00",
+      "description": "RoomBooking implementation: gpt-5.6-luna medium",
+      "status": "implementation_completed",
+      "manifestUrl": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/manifest.json",
+      "implementation": {
+        "status": "completed",
+        "model": "gpt-5.6-luna",
+        "reasoningEffort": "medium",
+        "promptVersion": "implementation-v1",
+        "startedAtUtc": "2026-09-28T17:58:48.1249365+02:00",
+        "completedAtUtc": "2026-09-28T18:07:34.2146269+02:00",
+        "durationSeconds": 526.09,
+        "maxDurationMinutes": 30,
+        "timedOut": false,
+        "inputTokens": 1068114,
+        "outputTokens": 20542,
+        "reasoningTokens": null,
+        "cachedInputTokens": 989952,
+        "exitCode": 0,
+        "buildExitCode": 0,
+        "testExitCode": 0,
+        "verificationPassed": true,
+        "codexVersion": "codex-cli 0.158.0-alpha.2.1",
+        "dotnetVersion": "10.0.401",
+        "testsPassed": 5,
+        "testsTotal": 5
+      },
+      "resultItems": [
+        {
+          "key": "mode",
+          "label": "Benchmarkläge och variant",
+          "status": "available",
+          "value": "implementation / implementation-v1",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "startCommit",
+          "label": "Start-commit",
+          "status": "missing",
+          "value": "Ej registrerat",
+          "note": "Git användes inte för dessa körningar.",
+          "artifactPath": ""
+        },
+        {
+          "key": "model",
+          "label": "Modell och exakt modellversion",
+          "status": "available",
+          "value": "gpt-5.6-luna; Codex codex-cli 0.158.0-alpha.2.1",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "dateTime",
+          "label": "Datum och tid",
+          "status": "available",
+          "value": "09/28/2026 17:58:48 – 09/28/2026 18:07:34",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "instructions",
+          "label": "Systeminstruktion och uppgiftsprompt",
+          "status": "partial",
+          "value": "Uppgiftsprompten är sparad; systeminstruktionen är inte separat registrerad.",
+          "note": "",
+          "artifactPath": "implementation/prompt.md"
+        },
+        {
+          "key": "tools",
+          "label": "Tillåtna verktyg",
+          "status": "partial",
+          "value": "Codex CLI; isolering: temporary-auth-only; inaktiverat: plugins, apps, multi_agent",
+          "note": "Exakt verktygslista registrerades inte strukturerat.",
+          "artifactPath": "implementation/command.txt"
+        },
+        {
+          "key": "maxDuration",
+          "label": "Maximal körtid",
+          "status": "available",
+          "value": "30 minuter",
+          "note": "Tidsgränsen verkställs av körskriptet för Codex-processen.",
+          "artifactPath": ""
+        },
+        {
+          "key": "interactions",
+          "label": "Antal modellinteraktioner",
+          "status": "available",
+          "value": "1 modellturn; 6 agentmeddelanden; 12 kommandon; 7 filändringar",
+          "note": "",
+          "artifactPath": "implementation/events.jsonl"
+        },
+        {
+          "key": "tokens",
+          "label": "In- och utgående tokens",
+          "status": "available",
+          "value": "1068114 input; 989952 cachade; 20542 output",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "cost",
+          "label": "Uppskattad kostnad",
+          "status": "missing",
+          "value": "Ej registrerat",
+          "note": "Ingen prislista eller kostnadsberäkning sparades vid körningen.",
+          "artifactPath": ""
+        },
+        {
+          "key": "duration",
+          "label": "Total körtid",
+          "status": "available",
+          "value": "526.09 sekunder",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "attempts",
+          "label": "Antal bygg- och testförsök",
+          "status": "available",
+          "value": "Modellen: 4 build och 2 test; styrskriptet: 1 build och 1 test",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "changedFiles",
+          "label": "Antal ändrade filer",
+          "status": "available",
+          "value": "22",
+          "note": "Implementation från tom arbetsyta; REQUIREMENTS.md räknas inte.",
+          "artifactPath": ""
+        },
+        {
+          "key": "changedLines",
+          "label": "Tillagda och borttagna kodrader",
+          "status": "available",
+          "value": "+103 / -0",
+          "note": "Beräknat när changes.patch skapades.",
+          "artifactPath": "implementation/changes.patch"
+        },
+        {
+          "key": "build",
+          "label": "Byggresultat",
+          "status": "available",
+          "value": "Godkänd (exit 0)",
+          "note": "",
+          "artifactPath": "implementation/test-results/build.log"
+        },
+        {
+          "key": "testCategories",
+          "label": "Resultat per testkategori",
+          "status": "available",
+          "value": "Affärslogik: 5/5; Blazor och komponenter: 0/0; Web API och integration: 0/0; Webbläsarflöden: 0/0; Tillgänglighet: 0/0; Samtidighet och gränsfall: 0/0; Okategoriserade tester: 0/0",
+          "note": "Kategoriserat från TRX-testnamn.",
+          "artifactPath": "implementation/test-results/summary.json"
+        },
+        {
+          "key": "fixedBugs",
+          "label": "Lösta buggrapporter",
+          "status": "not_applicable",
+          "value": "Inte tillämpligt i implementationsläget",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "regressions",
+          "label": "Antal regressioner",
+          "status": "missing",
+          "value": "Ej registrerat",
+          "note": "Ingen separat regressionssvit eller baslinjejämförelse kördes.",
+          "artifactPath": ""
+        },
+        {
+          "key": "partialScores",
+          "label": "Delpoäng: Blazor, API och affärslogik",
+          "status": "partial",
+          "value": "Blazor 0/25; API 0/20; affärslogik 20/20",
+          "note": "Preliminär poäng baserad på build och tillgängliga TRX-resultat. Testerna kan vara skapade av modellen och är inte oberoende benchmarktester. Om ett testområde saknas ges 0 poäng; dolda benchmarktester krävs för en slutgiltig bedömning.",
+          "artifactPath": "implementation/assessment.json"
+        },
+        {
+          "key": "finalScore",
+          "label": "Slutpoäng",
+          "status": "partial",
+          "value": "40/100 poäng; verifierat underlag 40/100",
+          "note": "Preliminär automatiserad poäng; dolda benchmarktester krävs för slutgiltig poäng.",
+          "artifactPath": "implementation/assessment.json"
+        },
+        {
+          "key": "finalChange",
+          "label": "Modellens slutliga kodändring",
+          "status": "available",
+          "value": "Arbetsytans SHA-256: 1af4e2e62d33d7f0cfe1fe16a488b0472095f6f4a4f545583f64c3418f696989",
+          "note": "Fullständig patch från den tomma implementationsbaslinjen.",
+          "artifactPath": "implementation/changes.patch"
+        },
+        {
+          "key": "summary",
+          "label": "Modellens sammanfattning",
+          "status": "available",
+          "value": "Sparad i final-response.md",
+          "note": "",
+          "artifactPath": "implementation/final-response.md"
+        }
+      ],
+      "files": [
+        {
+          "path": "manifest.json",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/manifest.json",
+          "sizeBytes": 1254
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Properties/launchSettings.json",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Properties/launchSettings.json",
+          "sizeBytes": 288
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Models/Entities.cs",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Models/Entities.cs",
+          "sizeBytes": 706
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Data/RoomBookingDbContext.cs",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Data/RoomBookingDbContext.cs",
+          "sizeBytes": 593
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Data/DatabaseSeeder.cs",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Data/DatabaseSeeder.cs",
+          "sizeBytes": 789
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Contracts/Contracts.cs",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Contracts/Contracts.cs",
+          "sizeBytes": 680
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/EditBooking.razor",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Components/Pages/EditBooking.razor",
+          "sizeBytes": 169
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/CreateBooking.razor",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Components/Pages/CreateBooking.razor",
+          "sizeBytes": 93
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/Bookings.razor",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Components/Pages/Bookings.razor",
+          "sizeBytes": 1401
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/BookingForm.razor",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Components/Pages/BookingForm.razor",
+          "sizeBytes": 2103
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/BookingDetails.razor",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Components/Pages/BookingDetails.razor",
+          "sizeBytes": 847
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Layout/MainLayout.razor",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Components/Layout/MainLayout.razor",
+          "sizeBytes": 183
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Routes.razor",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Components/Routes.razor",
+          "sizeBytes": 281
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/App.razor",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Components/App.razor",
+          "sizeBytes": 360
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/RoomBooking.Web.csproj",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/RoomBooking.Web.csproj",
+          "sizeBytes": 499
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Program.cs",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Program.cs",
+          "sizeBytes": 2412
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/appsettings.json",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/appsettings.json",
+          "sizeBytes": 171
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/_Imports.razor",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/_Imports.razor",
+          "sizeBytes": 269
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Tests/RoomBooking.Tests.csproj",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Tests/RoomBooking.Tests.csproj",
+          "sizeBytes": 545
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Tests/BookingServiceTests.cs",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Tests/BookingServiceTests.cs",
+          "sizeBytes": 2184
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.sln",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.sln",
+          "sizeBytes": 1530
+        },
+        {
+          "path": "implementation/workspace/REQUIREMENTS.md",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/REQUIREMENTS.md",
+          "sizeBytes": 26896
+        },
+        {
+          "path": "implementation/test-results/summary.json",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/test-results/summary.json",
+          "sizeBytes": 1176
+        },
+        {
+          "path": "implementation/run.json",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/run.json",
+          "sizeBytes": 1290
+        },
+        {
+          "path": "implementation/prompt.md",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/prompt.md",
+          "sizeBytes": 1185
+        },
+        {
+          "path": "implementation/input-files.json",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/input-files.json",
+          "sizeBytes": 275
+        },
+        {
+          "path": "implementation/final-response.md",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/final-response.md",
+          "sizeBytes": 875
+        },
+        {
+          "path": "implementation/changes.patch",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/changes.patch",
+          "sizeBytes": 24299
+        },
+        {
+          "path": "implementation/assessment.json",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/assessment.json",
+          "sizeBytes": 3059
+        },
+        {
+          "path": "README.md",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/README.md",
+          "sizeBytes": 422
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Services/BookingService.cs",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/Services/BookingService.cs",
+          "sizeBytes": 3646
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/app.css",
+          "url": "data/runs/54448bdf-fd40-4c05-849e-8387fe757cea/implementation/workspace/RoomBooking.Web/wwwroot/app.css",
+          "sizeBytes": 728
+        }
+      ]
+    },
+    {
+      "id": "006fd21f-1225-447a-9301-0e5ccde8cf82",
+      "createdAtUtc": "2026-09-28T17:40:23.070158+02:00",
+      "description": "RoomBooking implementation: gpt-6-sol medium",
+      "status": "implementation_completed",
+      "manifestUrl": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/manifest.json",
+      "implementation": {
+        "status": "completed",
+        "model": "gpt-6-sol",
+        "reasoningEffort": "medium",
+        "promptVersion": "implementation-v1",
+        "startedAtUtc": "2026-09-28T17:40:34.0615075+02:00",
+        "completedAtUtc": "2026-09-28T17:58:29.4970878+02:00",
+        "durationSeconds": 1075.436,
+        "maxDurationMinutes": 30,
+        "timedOut": false,
+        "inputTokens": 3993377,
+        "outputTokens": 28901,
+        "reasoningTokens": null,
+        "cachedInputTokens": 3879424,
+        "exitCode": 0,
+        "buildExitCode": 0,
+        "testExitCode": 0,
+        "verificationPassed": true,
+        "codexVersion": "codex-cli 0.158.0-alpha.2.1",
+        "dotnetVersion": "10.0.401",
+        "testsPassed": 9,
+        "testsTotal": 9
+      },
+      "resultItems": [
+        {
+          "key": "mode",
+          "label": "Benchmarkläge och variant",
+          "status": "available",
+          "value": "implementation / implementation-v1",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "startCommit",
+          "label": "Start-commit",
+          "status": "missing",
+          "value": "Ej registrerat",
+          "note": "Git användes inte för dessa körningar.",
+          "artifactPath": ""
+        },
+        {
+          "key": "model",
+          "label": "Modell och exakt modellversion",
+          "status": "available",
+          "value": "gpt-6-sol; Codex codex-cli 0.158.0-alpha.2.1",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "dateTime",
+          "label": "Datum och tid",
+          "status": "available",
+          "value": "09/28/2026 17:40:34 – 09/28/2026 17:58:29",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "instructions",
+          "label": "Systeminstruktion och uppgiftsprompt",
+          "status": "partial",
+          "value": "Uppgiftsprompten är sparad; systeminstruktionen är inte separat registrerad.",
+          "note": "",
+          "artifactPath": "implementation/prompt.md"
+        },
+        {
+          "key": "tools",
+          "label": "Tillåtna verktyg",
+          "status": "partial",
+          "value": "Codex CLI; isolering: temporary-auth-only; inaktiverat: plugins, apps, multi_agent",
+          "note": "Exakt verktygslista registrerades inte strukturerat.",
+          "artifactPath": "implementation/command.txt"
+        },
+        {
+          "key": "maxDuration",
+          "label": "Maximal körtid",
+          "status": "available",
+          "value": "30 minuter",
+          "note": "Tidsgränsen verkställs av körskriptet för Codex-processen.",
+          "artifactPath": ""
+        },
+        {
+          "key": "interactions",
+          "label": "Antal modellinteraktioner",
+          "status": "available",
+          "value": "1 modellturn; 11 agentmeddelanden; 52 kommandon; 26 filändringar",
+          "note": "",
+          "artifactPath": "implementation/events.jsonl"
+        },
+        {
+          "key": "tokens",
+          "label": "In- och utgående tokens",
+          "status": "available",
+          "value": "3993377 input; 3879424 cachade; 28901 output",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "cost",
+          "label": "Uppskattad kostnad",
+          "status": "missing",
+          "value": "Ej registrerat",
+          "note": "Ingen prislista eller kostnadsberäkning sparades vid körningen.",
+          "artifactPath": ""
+        },
+        {
+          "key": "duration",
+          "label": "Total körtid",
+          "status": "available",
+          "value": "1075.436 sekunder",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "attempts",
+          "label": "Antal bygg- och testförsök",
+          "status": "available",
+          "value": "Modellen: 4 build och 19 test; styrskriptet: 1 build och 1 test",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "changedFiles",
+          "label": "Antal ändrade filer",
+          "status": "available",
+          "value": "62",
+          "note": "Implementation från tom arbetsyta; REQUIREMENTS.md räknas inte.",
+          "artifactPath": ""
+        },
+        {
+          "key": "changedLines",
+          "label": "Tillagda och borttagna kodrader",
+          "status": "available",
+          "value": "+61330 / -0",
+          "note": "Beräknat när changes.patch skapades.",
+          "artifactPath": "implementation/changes.patch"
+        },
+        {
+          "key": "build",
+          "label": "Byggresultat",
+          "status": "available",
+          "value": "Godkänd (exit 0)",
+          "note": "",
+          "artifactPath": "implementation/test-results/build.log"
+        },
+        {
+          "key": "testCategories",
+          "label": "Resultat per testkategori",
+          "status": "available",
+          "value": "Affärslogik: 2/2; Blazor och komponenter: 2/2; Web API och integration: 3/3; Webbläsarflöden: 1/1; Tillgänglighet: 0/0; Samtidighet och gränsfall: 1/1; Okategoriserade tester: 0/0",
+          "note": "Kategoriserat från TRX-testnamn.",
+          "artifactPath": "implementation/test-results/summary.json"
+        },
+        {
+          "key": "fixedBugs",
+          "label": "Lösta buggrapporter",
+          "status": "not_applicable",
+          "value": "Inte tillämpligt i implementationsläget",
+          "note": "",
+          "artifactPath": ""
+        },
+        {
+          "key": "regressions",
+          "label": "Antal regressioner",
+          "status": "missing",
+          "value": "Ej registrerat",
+          "note": "Ingen separat regressionssvit eller baslinjejämförelse kördes.",
+          "artifactPath": ""
+        },
+        {
+          "key": "partialScores",
+          "label": "Delpoäng: Blazor, API och affärslogik",
+          "status": "partial",
+          "value": "Blazor 25/25; API 20/20; affärslogik 20/20",
+          "note": "Preliminär poäng baserad på build och tillgängliga TRX-resultat. Testerna kan vara skapade av modellen och är inte oberoende benchmarktester. Om ett testområde saknas ges 0 poäng; dolda benchmarktester krävs för en slutgiltig bedömning.",
+          "artifactPath": "implementation/assessment.json"
+        },
+        {
+          "key": "finalScore",
+          "label": "Slutpoäng",
+          "status": "partial",
+          "value": "95/100 poäng; verifierat underlag 95/100",
+          "note": "Preliminär automatiserad poäng; dolda benchmarktester krävs för slutgiltig poäng.",
+          "artifactPath": "implementation/assessment.json"
+        },
+        {
+          "key": "finalChange",
+          "label": "Modellens slutliga kodändring",
+          "status": "available",
+          "value": "Arbetsytans SHA-256: 65b820221da173c3969521c59a3396e27542a35ef41f578dd945265a4d102286",
+          "note": "Fullständig patch från den tomma implementationsbaslinjen.",
+          "artifactPath": "implementation/changes.patch"
+        },
+        {
+          "key": "summary",
+          "label": "Modellens sammanfattning",
+          "status": "available",
+          "value": "Sparad i final-response.md",
+          "note": "",
+          "artifactPath": "implementation/final-response.md"
+        }
+      ],
+      "files": [
+        {
+          "path": "manifest.json",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/manifest.json",
+          "sizeBytes": 1247
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+          "sizeBytes": 51795
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+          "sizeBytes": 70329
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/app.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/app.css",
+          "sizeBytes": 3394
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Services/BookingService.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Services/BookingService.cs",
+          "sizeBytes": 7794
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Properties/launchSettings.json",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Properties/launchSettings.json",
+          "sizeBytes": 681
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Models/Room.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Models/Room.cs",
+          "sizeBytes": 297
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+          "sizeBytes": 70403
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Models/Booking.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Models/Booking.cs",
+          "sizeBytes": 618
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Data/DatabaseSeeder.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Data/DatabaseSeeder.cs",
+          "sizeBytes": 935
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Contracts/BookingContracts.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Contracts/BookingContracts.cs",
+          "sizeBytes": 805
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/NotFound.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Pages/NotFound.razor",
+          "sizeBytes": 126
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/Home.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Pages/Home.razor",
+          "sizeBytes": 142
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/Error.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Pages/Error.razor",
+          "sizeBytes": 1215
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/EditBooking.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Pages/EditBooking.razor",
+          "sizeBytes": 1846
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Data/RoomBookingDbContext.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Data/RoomBookingDbContext.cs",
+          "sizeBytes": 650
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/CreateBooking.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Pages/CreateBooking.razor",
+          "sizeBytes": 1263
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+          "sizeBytes": 51870
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+          "sizeBytes": 10126
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+          "sizeBytes": 73935
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+          "sizeBytes": 135829
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+          "sizeBytes": 80721
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+          "sizeBytes": 207819
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+          "sizeBytes": 232911
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+          "sizeBytes": 280259
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+          "sizeBytes": 12065
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+          "sizeBytes": 232803
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+          "sizeBytes": 85281
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+          "sizeBytes": 107691
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+          "sizeBytes": 85352
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+          "sizeBytes": 107823
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+          "sizeBytes": 10198
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+          "sizeBytes": 12058
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+          "sizeBytes": 281046
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/Bookings.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Pages/Bookings.razor",
+          "sizeBytes": 2570
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Pages/BookingDetails.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Pages/BookingDetails.razor",
+          "sizeBytes": 2350
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Layout/ReconnectModal.razor.js",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Layout/ReconnectModal.razor.js",
+          "sizeBytes": 2448
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Tests/BookingServiceTests.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Tests/BookingServiceTests.cs",
+          "sizeBytes": 3517
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Tests/ApiTests.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Tests/ApiTests.cs",
+          "sizeBytes": 4805
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.sln",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.sln",
+          "sizeBytes": 2898
+        },
+        {
+          "path": "implementation/workspace/REQUIREMENTS.md",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/REQUIREMENTS.md",
+          "sizeBytes": 26896
+        },
+        {
+          "path": "implementation/workspace/README.md",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/README.md",
+          "sizeBytes": 1149
+        },
+        {
+          "path": "implementation/workspace/.gitignore",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/.gitignore",
+          "sizeBytes": 52
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Tests/BrowserTests.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Tests/BrowserTests.cs",
+          "sizeBytes": 6681
+        },
+        {
+          "path": "implementation/test-results/summary.json",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/test-results/summary.json",
+          "sizeBytes": 1176
+        },
+        {
+          "path": "implementation/prompt.md",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/prompt.md",
+          "sizeBytes": 1185
+        },
+        {
+          "path": "implementation/input-files.json",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/input-files.json",
+          "sizeBytes": 275
+        },
+        {
+          "path": "implementation/final-response.md",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/final-response.md",
+          "sizeBytes": 842
+        },
+        {
+          "path": "implementation/changes.patch",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/changes.patch",
+          "sizeBytes": 2624052
+        },
+        {
+          "path": "implementation/assessment.json",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/assessment.json",
+          "sizeBytes": 3071
+        },
+        {
+          "path": "README.md",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/README.md",
+          "sizeBytes": 419
+        },
+        {
+          "path": "implementation/run.json",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/run.json",
+          "sizeBytes": 1292
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Tests/ComponentTests.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Tests/ComponentTests.cs",
+          "sizeBytes": 1719
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Tests/RoomBooking.Tests.csproj",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Tests/RoomBooking.Tests.csproj",
+          "sizeBytes": 956
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/appsettings.Development.json",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/appsettings.Development.json",
+          "sizeBytes": 127
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Layout/ReconnectModal.razor.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Layout/ReconnectModal.razor.css",
+          "sizeBytes": 3873
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Layout/ReconnectModal.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Layout/ReconnectModal.razor",
+          "sizeBytes": 1362
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Layout/NavMenu.razor.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Layout/NavMenu.razor.css",
+          "sizeBytes": 3418
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Layout/NavMenu.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Layout/NavMenu.razor",
+          "sizeBytes": 731
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Layout/MainLayout.razor.css",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Layout/MainLayout.razor.css",
+          "sizeBytes": 1940
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Layout/MainLayout.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Layout/MainLayout.razor",
+          "sizeBytes": 547
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/Routes.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/Routes.razor",
+          "sizeBytes": 300
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/BookingFormModel.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/BookingFormModel.cs",
+          "sizeBytes": 1793
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/BookingForm.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/BookingForm.razor",
+          "sizeBytes": 2622
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/App.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/App.razor",
+          "sizeBytes": 734
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Components/_Imports.razor",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Components/_Imports.razor",
+          "sizeBytes": 444
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Api/BookingEndpoints.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Api/BookingEndpoints.cs",
+          "sizeBytes": 2818
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/RoomBooking.Web.csproj",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/RoomBooking.Web.csproj",
+          "sizeBytes": 501
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/Program.cs",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/Program.cs",
+          "sizeBytes": 2393
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/appsettings.json",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/appsettings.json",
+          "sizeBytes": 151
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+          "sizeBytes": 145401
+        },
+        {
+          "path": "implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+          "url": "data/runs/006fd21f-1225-447a-9301-0e5ccde8cf82/implementation/workspace/RoomBooking.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+          "sizeBytes": 60635
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+@page "/bookings/{Id:int}"
+@using RoomBooking.Web.Contracts
+@using RoomBooking.Web.Services
+@inject IBookingService BookingsService
+
+<PageTitle>Bokningsdetaljer</PageTitle>
+<h1>Bokningsdetaljer</h1>
+@if (Loading) { <p role="status">Laddar bokning…</p> }
+else if (Error is not null) { <p role="alert">@Error</p> }
+else if (Booking is null) { <p role="alert">Bokningen finns inte.</p> }
+else
+{
+    <dl>
+        <dt>Rubrik</dt><dd>@Booking.Title</dd>
+        <dt>Bokare</dt><dd>@Booking.BookedBy</dd>
+        <dt>Mötesrum</dt><dd>@Booking.RoomName</dd>
+        <dt>Start (UTC)</dt><dd>@Booking.StartTime.ToString("yyyy-MM-dd HH:mm")</dd>
+        <dt>Slut (UTC)</dt><dd>@Booking.EndTime.ToString("yyyy-MM-dd HH:mm")</dd>
+        <dt>Status</dt><dd>@(Booking.Status == "active" ? "Aktiv" : "Avbokad")</dd>
+        <dt>Skapad (UTC)</dt><dd>@Booking.CreatedAt.ToString("yyyy-MM-dd HH:mm")</dd>
+    </dl>
+    @if (Booking.Status == "active")
+    {
+        <a href="/bookings/@Id/edit">Redigera</a>
+        @if (!Confirming) { <button type="button" @onclick="() => Confirming = true">Avboka</button> }
+        else
+        {
+            <div role="group" aria-label="Bekräfta avbokning">
+                <p>Vill du avboka bokningen?</p>
+                <button type="button" disabled="@Cancelling" @onclick="CancelAsync">Ja, avboka</button>
+                <button type="button" @onclick="() => Confirming = false">Nej, behåll</button>
+            </div>
+        }
+    }
+}
+<p><a href="/bookings">Till bokningslistan</a></p>
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private BookingDto? Booking;
+    private bool Loading = true, Confirming, Cancelling;
+    private string? Error;
+    protected override async Task OnParametersSetAsync()
+    {
+        Loading = true; Confirming = false; Error = null;
+        try { Booking = await BookingsService.GetBookingAsync(Id); }
+        catch { Error = "Bokningen kunde inte hämtas."; }
+        finally { Loading = false; }
+    }
+    private async Task CancelAsync()
+    {
+        if (Cancelling) return;
+        Cancelling = true; Error = null;
+        try { Booking = await BookingsService.CancelAsync(Id); Confirming = false; }
+        catch (BookingException ex) { Error = ex.Message; }
+        catch { Error = "Bokningen kunde inte avbokas."; }
+        finally { Cancelling = false; }
+    }
+}

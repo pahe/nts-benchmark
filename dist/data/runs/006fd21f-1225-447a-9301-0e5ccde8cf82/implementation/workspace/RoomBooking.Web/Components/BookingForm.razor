@@ -1,0 +1,40 @@
+@using System.ComponentModel.DataAnnotations
+@using RoomBooking.Web.Contracts
+@using RoomBooking.Web.Services
+
+<EditForm Model="Model" OnValidSubmit="SubmitAsync" FormName="booking-form">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    @if (!string.IsNullOrEmpty(Error)) { <p role="alert" class="error">@Error</p> }
+    <div class="field"><label for="title">Rubrik</label><InputText id="title" @bind-Value="Model.Title" /><ValidationMessage For="() => Model.Title" /></div>
+    <div class="field"><label for="bookedBy">Bokare</label><InputText id="bookedBy" @bind-Value="Model.BookedBy" /><ValidationMessage For="() => Model.BookedBy" /></div>
+    <div class="field"><label for="room">Mötesrum</label><InputSelect id="room" @bind-Value="Model.RoomId">
+        <option value="0">Välj rum</option>
+        @foreach (var room in Rooms) { <option value="@room.Id">@room.Name (@room.Capacity personer)</option> }
+    </InputSelect><ValidationMessage For="() => Model.RoomId" /></div>
+    <div class="field"><label for="date">Datum (UTC)</label><InputDate id="date" @bind-Value="Model.Date" /><ValidationMessage For="() => Model.Date" /></div>
+    <div class="field"><label for="start">Starttid (UTC)</label><InputText id="start" type="time" @bind-Value="Model.Start" /><ValidationMessage For="() => Model.Start" /></div>
+    <div class="field"><label for="end">Sluttid (UTC)</label><InputText id="end" type="time" @bind-Value="Model.End" /><ValidationMessage For="() => Model.End" /></div>
+    <button type="submit" disabled="@Saving">@(Saving ? "Sparar…" : "Spara bokning")</button>
+</EditForm>
+
+@code {
+    [Parameter, EditorRequired] public BookingFormModel Model { get; set; } = new();
+    [Parameter, EditorRequired] public IReadOnlyList<RoomDto> Rooms { get; set; } = [];
+    [Parameter, EditorRequired] public EventCallback<BookingInput> OnSave { get; set; }
+    [Parameter] public string? Error { get; set; }
+    [Parameter] public bool Saving { get; set; }
+    private async Task SubmitAsync()
+    {
+        if (Saving) return;
+        var day = DateOnly.FromDateTime(Model.Date);
+        var start = TimeOnly.Parse(Model.Start, System.Globalization.CultureInfo.InvariantCulture);
+        var end = TimeOnly.Parse(Model.End, System.Globalization.CultureInfo.InvariantCulture);
+        await OnSave.InvokeAsync(new BookingInput
+        {
+            Title = Model.Title, BookedBy = Model.BookedBy, RoomId = Model.RoomId,
+            StartTime = new DateTimeOffset(day.ToDateTime(start), TimeSpan.Zero),
+            EndTime = new DateTimeOffset(day.ToDateTime(end), TimeSpan.Zero)
+        });
+    }
+}

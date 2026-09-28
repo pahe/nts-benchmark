@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "role": "requirements",
+      "sourcePath": "docs/room-booking-benchmark.md",
+      "workspacePath": "REQUIREMENTS.md",
+      "sha256": "acb57b094238e5e3d0c1f24091cdbd5a1c7302f4b4bf3e38e75612f8cb5e8df4"
+    }
+  ]
+}

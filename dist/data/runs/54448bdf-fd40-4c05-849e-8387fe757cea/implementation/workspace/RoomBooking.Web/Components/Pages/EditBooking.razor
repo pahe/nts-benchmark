@@ -1,0 +1,3 @@
+@page "/bookings/{Id:int}/edit"
+<h1>Redigera bokning</h1><BookingForm Id="Id"/><p><a href="/bookings">Tillbaka</a></p>
+@code { [Parameter] public int Id { get; set; } }

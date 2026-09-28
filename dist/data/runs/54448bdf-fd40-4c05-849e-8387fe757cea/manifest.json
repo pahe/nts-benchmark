@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "54448bdf-fd40-4c05-849e-8387fe757cea",
+  "createdAtUtc": "2026-09-28T17:58:37.3895078+02:00",
+  "description": "RoomBooking implementation: gpt-5.6-luna medium",
+  "status": "implementation_completed",
+  "paths": {
+    "implementationWorkspace": "implementation/workspace",
+    "implementationPrompt": "implementation/prompt.md",
+    "implementationResults": "implementation/test-results",
+    "bugfixPreparation": "buggfix/preparation",
+    "bugfixInput": "buggfix/input",
+    "bugfixWorkspace": "buggfix/workspace",
+    "bugfixPrompt": "buggfix/prompt.md",
+    "bugfixResults": "buggfix/test-results"
+  },
+  "phases": {
+    "implementation": {
+      "status": "completed",
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "promptVersion": "implementation-v1",
+      "promptSha256": "318619e5ded9191d9e6a43e181b7aa2583c9334b0eb539711b1d639ea0307b56",
+      "referenceContentSha256": "1af4e2e62d33d7f0cfe1fe16a488b0472095f6f4a4f545583f64c3418f696989"
+    },
+    "bugfix": {
+      "status": "blocked",
+      "model": null,
+      "reasoningEffort": null,
+      "promptVersion": "buggfix-v1",
+      "promptSha256": null,
+      "inputContentSha256": null
+    }
+  }
+}

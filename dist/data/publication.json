@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "profile": "public",
+  "generatedAtUtc": "2026-09-28T16:54:13.1854660+00:00",
+  "included": [
+    "manifest och run-metadata",
+    "prompter",
+    "slutsvar",
+    "publicerbar källkod"
+  ],
+  "excluded": [
+    "events.jsonl",
+    "command.txt",
+    "stderr.log",
+    "bygg- och testloggar",
+    "TRX-filer",
+    "buggfix/preparation och privata facit"
+  ],
+  "sanitization": [
+    "arbetsytesökvägar",
+    "användarprofilssökvägar"
+  ]
+}

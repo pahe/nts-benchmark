@@ -1,0 +1,34 @@
+@page "/bookings/new"
+@using RoomBooking.Web.Contracts
+@using RoomBooking.Web.Services
+@inject IBookingService BookingsService
+@inject NavigationManager Navigation
+
+<PageTitle>Skapa bokning</PageTitle>
+<h1>Skapa bokning</h1>
+@if (Loading) { <p role="status">Laddar mötesrum…</p> }
+else { <BookingForm Model="Model" Rooms="Rooms" Error="Error" Saving="Saving" OnSave="SaveAsync" /> }
+<p><a href="/bookings">Till bokningslistan</a></p>
+
+@code {
+    private BookingFormModel Model = new();
+    private IReadOnlyList<RoomDto> Rooms = [];
+    private string? Error;
+    private bool Loading = true;
+    private bool Saving;
+    protected override async Task OnInitializedAsync()
+    {
+        try { Rooms = await BookingsService.GetRoomsAsync(true); }
+        catch { Error = "Mötesrummen kunde inte hämtas."; }
+        finally { Loading = false; }
+    }
+    private async Task SaveAsync(BookingInput input)
+    {
+        if (Saving) return;
+        Saving = true; Error = null;
+        try { var booking = await BookingsService.CreateAsync(input); Navigation.NavigateTo($"/bookings/{booking.Id}"); }
+        catch (BookingException ex) { Error = ex.Message; }
+        catch { Error = "Bokningen kunde inte sparas."; }
+        finally { Saving = false; }
+    }
+}

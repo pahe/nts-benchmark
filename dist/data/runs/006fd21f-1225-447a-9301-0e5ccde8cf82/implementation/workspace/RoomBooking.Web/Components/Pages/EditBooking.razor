@@ -1,0 +1,47 @@
+@page "/bookings/{Id:int}/edit"
+@using RoomBooking.Web.Contracts
+@using RoomBooking.Web.Services
+@inject IBookingService BookingsService
+@inject NavigationManager Navigation
+
+<PageTitle>Redigera bokning</PageTitle>
+<h1>Redigera bokning</h1>
+@if (Loading) { <p role="status">Laddar bokning…</p> }
+else if (Missing) { <p role="alert">Bokningen finns inte.</p> }
+else if (Cancelled) { <p role="alert">En avbokad bokning kan inte redigeras.</p> }
+else { <BookingForm @key="Id" Model="Model" Rooms="Rooms" Error="Error" Saving="Saving" OnSave="SaveAsync" /> }
+<p><a href="/bookings">Till bokningslistan</a></p>
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private BookingFormModel Model = new();
+    private IReadOnlyList<RoomDto> Rooms = [];
+    private bool Loading = true, Missing, Cancelled, Saving;
+    private string? Error;
+    protected override async Task OnParametersSetAsync()
+    {
+        Loading = true; Missing = false; Cancelled = false; Error = null;
+        try
+        {
+            var booking = await BookingsService.GetBookingAsync(Id);
+            if (booking is null) Missing = true;
+            else
+            {
+                Cancelled = booking.Status == "cancelled";
+                Model = BookingFormModel.From(booking);
+                Rooms = await BookingsService.GetRoomsAsync(true);
+            }
+        }
+        catch { Error = "Bokningen kunde inte hämtas."; }
+        finally { Loading = false; }
+    }
+    private async Task SaveAsync(BookingInput input)
+    {
+        if (Saving) return;
+        Saving = true; Error = null;
+        try { await BookingsService.UpdateAsync(Id, input); Navigation.NavigateTo($"/bookings/{Id}"); }
+        catch (BookingException ex) { Error = ex.Message; }
+        catch { Error = "Bokningen kunde inte sparas."; }
+        finally { Saving = false; }
+    }
+}

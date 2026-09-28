@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "method": "observable-v1",
+  "provisional": true,
+  "note": "Preliminär poäng baserad på build och tillgängliga TRX-resultat. Testerna kan vara skapade av modellen och är inte oberoende benchmarktester. Om ett testområde saknas ges 0 poäng; dolda benchmarktester krävs för en slutgiltig bedömning.",
+  "testCategories": {
+    "businessLogic": {
+      "name": "Affärslogik",
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    "blazor": {
+      "name": "Blazor och komponenter",
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0
+    },
+    "api": {
+      "name": "Web API och integration",
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "name": "Webbläsarflöden",
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0
+    },
+    "accessibility": {
+      "name": "Tillgänglighet",
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0
+    },
+    "concurrency": {
+      "name": "Samtidighet och gränsfall",
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0
+    },
+    "uncategorized": {
+      "name": "Okategoriserade tester",
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "partialScores": {
+    "blazor": {
+      "score": 0,
+      "maxScore": 25,
+      "evaluated": false
+    },
+    "api": {
+      "score": 0,
+      "maxScore": 20,
+      "evaluated": false
+    },
+    "businessLogic": {
+      "score": 20.0,
+      "maxScore": 20,
+      "evaluated": true
+    }
+  },
+  "rubric": {
+    "buildAndStart": {
+      "score": 10,
+      "maxScore": 10,
+      "evaluated": true,
+      "evidence": "Lösningen kompilerade; separat startkontroll saknas."
+    },
+    "blazorPagesAndFlows": {
+      "score": 0,
+      "maxScore": 15,
+      "evaluated": false,
+      "evidence": "0/0 tester godkända"
+    },
+    "formsAndComponentState": {
+      "score": 0,
+      "maxScore": 10,
+      "evaluated": false,
+      "evidence": "0/0 tester godkända"
+    },
+    "businessRulesAndValidation": {
+      "score": 20.0,
+      "maxScore": 20,
+      "evaluated": true,
+      "evidence": "5/5 tester godkända"
+    },
+    "webApi": {
+      "score": 0,
+      "maxScore": 20,
+      "evaluated": false,
+      "evidence": "0/0 tester godkända"
+    },
+    "hiddenEdgeCasesAndConcurrency": {
+      "score": 0,
+      "maxScore": 10,
+      "evaluated": false,
+      "evidence": "0/0 tester godkända"
+    },
+    "accessibility": {
+      "score": 0,
+      "maxScore": 5,
+      "evaluated": false,
+      "evidence": "0/0 tester godkända"
+    },
+    "testsQualityAndStructure": {
+      "score": 10,
+      "maxScore": 10,
+      "evaluated": true,
+      "evidence": "5/5 tester godkända; kodkvalitet är inte separat analyserad."
+    }
+  },
+  "score": 40.0,
+  "maxScore": 100,
+  "evaluatedMaxScore": 40
+}
