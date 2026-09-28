@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jämför resultat från RoomBooking-benchmarken sida vid sida.">
+  <title>RoomBooking – körningsresultat</title>
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+  <a class="skip-link" href="#comparison">Hoppa till jämförelsen</a>
+
+  <header class="page-header">
+    <h1>RoomBooking benchmark</h1>
+    <details class="about-benchmark">
+      <summary>Om benchmarken</summary>
+      <div class="about-content">
+        <h2>Jämför kodkörningar</h2>
+        <p>Välj två resultat och granska mätvärden, manifest, projektstruktur och filer sida vid sida.</p>
+        <p>Filskillnader markeras i träden och samma filsökväg öppnas på båda sidor för en direkt jämförelse.</p>
+        <p class="generated-at" id="generated-at"></p>
+      </div>
+    </details>
+  </header>
+
+  <section class="run-picker" aria-labelledby="picker-heading">
+    <h2 id="picker-heading" class="visually-hidden">Välj körningar</h2>
+    <div class="select-field">
+      <label for="run-a-select">Vänster körning</label>
+      <select id="run-a-select"></select>
+    </div>
+    <button id="swap-runs" class="swap-button" type="button" aria-label="Byt plats på körningarna">
+      <span aria-hidden="true">⇄</span>
+      Byt plats
+    </button>
+    <div class="select-field">
+      <label for="run-b-select">Höger körning</label>
+      <select id="run-b-select"></select>
+    </div>
+  </section>
+
+  <p id="app-status" class="app-status" role="status" aria-live="polite">Läser in körningar …</p>
+
+  <main id="comparison" class="comparison" tabindex="-1">
+    <article class="run-panel wrap-lines" data-side="a" aria-labelledby="run-a-title">
+      <details class="run-overview">
+        <summary class="overview-summary">
+          <span class="overview-summary-row">
+            <span>
+              <span class="panel-label">Vänster</span>
+              <span id="run-a-title" class="overview-title"><span id="model-a">Ingen körning vald</span><span class="overview-separator"> · </span><span class="reasoning-prefix">reasoning </span><span id="reasoning-a">–</span></span>
+            </span>
+            <span id="status-a" class="status-chip">–</span>
+          </span>
+        </summary>
+        <div class="overview-body">
+          <dl id="metrics-a" class="metrics"></dl>
+          <details class="results-card">
+            <summary><span>Alla resultatmått</span><span id="coverage-a" class="coverage"></span></summary>
+            <dl id="results-a" class="result-list"></dl>
+          </details>
+          <details class="manifest-card">
+            <summary>Visa manifest</summary>
+            <pre tabindex="0"><code id="manifest-a"></code></pre>
+          </details>
+        </div>
+      </details>
+      <div class="explorer">
+        <nav class="file-navigation" aria-label="Filer i vänster körning">
+          <h3>Filer</h3>
+          <p class="tree-legend">Skillnader märks med <strong>Endast här</strong> eller <strong>Saknas</strong>.</p>
+          <div id="tree-a" class="file-tree"></div>
+        </nav>
+        <section class="file-viewer" aria-labelledby="file-a-heading">
+          <header class="file-heading">
+            <h3 id="file-a-heading">Välj en fil</h3>
+            <div class="file-actions">
+              <span id="file-a-meta"></span>
+              <button class="external-editor" type="button" data-side="a" disabled>Öppna externt</button>
+              <button class="format-toggle" type="button" data-side="a" aria-pressed="true">Formaterad vy: på</button>
+              <button class="wrap-toggle" type="button" data-side="a" aria-pressed="true">Radbrytning: på</button>
+            </div>
+          </header>
+          <pre tabindex="0"><code id="code-a">Välj en fil i trädet.</code></pre>
+        </section>
+      </div>
+    </article>
+
+    <article class="run-panel wrap-lines" data-side="b" aria-labelledby="run-b-title">
+      <details class="run-overview">
+        <summary class="overview-summary">
+          <span class="overview-summary-row">
+            <span>
+              <span class="panel-label">Höger</span>
+              <span id="run-b-title" class="overview-title"><span id="model-b">Ingen körning vald</span><span class="overview-separator"> · </span><span class="reasoning-prefix">reasoning </span><span id="reasoning-b">–</span></span>
+            </span>
+            <span id="status-b" class="status-chip">–</span>
+          </span>
+        </summary>
+        <div class="overview-body">
+          <dl id="metrics-b" class="metrics"></dl>
+          <details class="results-card">
+            <summary><span>Alla resultatmått</span><span id="coverage-b" class="coverage"></span></summary>
+            <dl id="results-b" class="result-list"></dl>
+          </details>
+          <details class="manifest-card">
+            <summary>Visa manifest</summary>
+            <pre tabindex="0"><code id="manifest-b"></code></pre>
+          </details>
+        </div>
+      </details>
+      <div class="explorer">
+        <nav class="file-navigation" aria-label="Filer i höger körning">
+          <h3>Filer</h3>
+          <p class="tree-legend">Skillnader märks med <strong>Endast här</strong> eller <strong>Saknas</strong>.</p>
+          <div id="tree-b" class="file-tree"></div>
+        </nav>
+        <section class="file-viewer" aria-labelledby="file-b-heading">
+          <header class="file-heading">
+            <h3 id="file-b-heading">Välj en fil</h3>
+            <div class="file-actions">
+              <span id="file-b-meta"></span>
+              <button class="external-editor" type="button" data-side="b" disabled>Öppna externt</button>
+              <button class="format-toggle" type="button" data-side="b" aria-pressed="true">Formaterad vy: på</button>
+              <button class="wrap-toggle" type="button" data-side="b" aria-pressed="true">Radbrytning: på</button>
+            </div>
+          </header>
+          <pre tabindex="0"><code id="code-b">Välj en fil i trädet.</code></pre>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <noscript>Webbläsaren måste tillåta JavaScript för att resultatvisaren ska fungera.</noscript>
+  <script src="app.js?v=3" defer></script>
+</body>
+</html>

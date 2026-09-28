@@ -432,7 +432,7 @@ scripts/Prepare-Bugfix.ps1
 scripts/Start-Bugfix.ps1
 ```
 
-Alla skript ska ta GUID:et explicit. Startskripten ska dessutom ta modell, reasoning-nivå, promptfil och maximal körtid som explicita parametrar.
+Alla skript ska ta GUID:et explicit. Startskripten ska dessutom ta modell, reasoning-nivå, promptfil och maximal körtid som explicita parametrar. Standardgränsen är 30 minuter för både implementation och buggfix. Körskriptet ska stoppa modellprocessen när gränsen nås samt registrera gränsen och om timeout inträffade i fasens `run.json`.
 
 Inget skript får automatiskt välja ett nytt GUID, återanvända en arbetsyta eller skriva över befintliga artefakter.
 

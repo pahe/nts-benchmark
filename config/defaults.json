@@ -12,7 +12,7 @@
     "codexHomeIsolation": "temporary-auth-only",
     "disabledFeatures": ["plugins", "apps", "multi_agent"],
     "approvalMode": "approve-for-me",
-    "timeoutMinutes": 180
+    "timeoutMinutes": 30
   },
   "bugfix": {
     "model": "gpt-6-sol",
@@ -25,6 +25,6 @@
     "codexHomeIsolation": "temporary-auth-only",
     "disabledFeatures": ["plugins", "apps", "multi_agent"],
     "approvalMode": "approve-for-me",
-    "timeoutMinutes": 120
+    "timeoutMinutes": 30
   }
 }

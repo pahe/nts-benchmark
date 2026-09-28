@@ -5,16 +5,21 @@ param(
 
     [string] $Model = "gpt-6-sol",
 
-    [ValidateSet("none", "low", "medium", "high", "xhigh", "max")]
+    [ValidateSet("none", "minimal", "low", "medium", "high", "xhigh", "max", "ultra")]
     [string] $ReasoningEffort = "medium",
 
     [string] $PromptPath,
 
-    [string] $RequirementsPath
+    [string] $RequirementsPath,
+
+    [ValidateRange(1, 1440)]
+    [int] $TimeoutMinutes = 30
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. (Join-Path $PSScriptRoot "BenchmarkProcess.ps1")
+. (Join-Path $PSScriptRoot "BenchmarkArtifacts.ps1")
 
 function Write-JsonAtomically {
     param(
@@ -155,6 +160,8 @@ $runMetadata = [ordered]@{
     startedAtUtc = $startedAt.ToString("O")
     completedAtUtc = $null
     durationSeconds = $null
+    maxDurationMinutes = $TimeoutMinutes
+    timedOut = $false
     codexVersion = $codexVersion
     dotnetVersion = $dotnetVersion
     workspacePath = "workspace"
@@ -167,6 +174,8 @@ $runMetadata = [ordered]@{
     testExitCode = $null
     verificationPassed = $false
     workspaceContentSha256 = $null
+    changesPatchPath = $null
+    assessmentPath = $null
 }
 $runMetadataPath = Join-Path $phasePath "run.json"
 Write-JsonAtomically -Value $runMetadata -Path $runMetadataPath
@@ -188,15 +197,22 @@ if (-not (Test-Path -LiteralPath $sourceAuthPath)) {
 $isolatedCodexHome = Join-Path ([System.IO.Path]::GetTempPath()) ("nts-benchmark-codex-" + [Guid]::NewGuid().ToString("N"))
 New-Item -ItemType Directory -Path $isolatedCodexHome | Out-Null
 Copy-Item -LiteralPath $sourceAuthPath -Destination (Join-Path $isolatedCodexHome "auth.json")
-$previousCodexHome = $env:CODEX_HOME
+$codexExecutable = (Get-Command codex -ErrorAction Stop).Source
 
 try {
-    $env:CODEX_HOME = $isolatedCodexHome
-    $promptText | & codex @codexArguments 1> $eventsPath 2> $stderrPath
-    $codexExitCode = $LASTEXITCODE
+    $codexResult = Invoke-BenchmarkProcess `
+        -FilePath $codexExecutable `
+        -ArgumentList $codexArguments `
+        -WorkingDirectory $workspacePath `
+        -StandardInput $promptText `
+        -StandardOutputPath $eventsPath `
+        -StandardErrorPath $stderrPath `
+        -Environment @{ CODEX_HOME = $isolatedCodexHome } `
+        -Timeout ([TimeSpan]::FromMinutes($TimeoutMinutes))
+    $codexExitCode = $codexResult.ExitCode
+    $runMetadata.timedOut = $codexResult.TimedOut
 }
 finally {
-    $env:CODEX_HOME = $previousCodexHome
     $resolvedIsolatedHome = (Resolve-Path -LiteralPath $isolatedCodexHome).Path
     $temporaryRoot = [System.IO.Path]::GetFullPath([System.IO.Path]::GetTempPath()).TrimEnd("\")
     if (-not $resolvedIsolatedHome.StartsWith($temporaryRoot + "\", [System.StringComparison]::OrdinalIgnoreCase)) {
@@ -229,6 +245,14 @@ else {
     "Ingen .sln- eller .slnx-fil hittades." | Set-Content -LiteralPath (Join-Path $testResultsPath "build.log") -Encoding utf8
 }
 
+$patchPath = Join-Path $phasePath "changes.patch"
+$patchSummary = Write-ImplementationPatch -WorkspacePath $workspacePath -PatchPath $patchPath
+$testSummary = Get-BenchmarkTestSummary -TestResultsPath $testResultsPath
+Write-JsonAtomically -Value $testSummary -Path (Join-Path $testResultsPath "summary.json")
+$assessment = Get-ImplementationAssessment -TestSummary $testSummary -BuildExitCode $buildExitCode -TestExitCode $testExitCode
+$assessmentPath = Join-Path $phasePath "assessment.json"
+Write-JsonAtomically -Value $assessment -Path $assessmentPath
+
 $usageEvent = Get-Content -LiteralPath $eventsPath -ErrorAction SilentlyContinue |
     ForEach-Object {
         try { $_ | ConvertFrom-Json } catch { $null }
@@ -248,6 +272,11 @@ $runMetadata.buildExitCode = $buildExitCode
 $runMetadata.testExitCode = $testExitCode
 $runMetadata.verificationPassed = $verificationPassed
 $runMetadata.workspaceContentSha256 = $workspaceHash
+$runMetadata.changesPatchPath = "changes.patch"
+$runMetadata.assessmentPath = "assessment.json"
+$runMetadata.changedFiles = $patchSummary.ChangedFiles
+$runMetadata.addedLines = $patchSummary.AddedLines
+$runMetadata.deletedLines = $patchSummary.DeletedLines
 
 if ($usageEvent) {
     $runMetadata.inputTokens = $usageEvent.usage.input_tokens
@@ -271,6 +300,7 @@ Write-Output ([pscustomobject]@{
     Status = $runMetadata.status
     Workspace = $workspacePath
     CodexExitCode = $codexExitCode
+    TimedOut = $runMetadata.timedOut
     BuildExitCode = $buildExitCode
     TestExitCode = $testExitCode
 })

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Nts.Benchmark.Cli/Nts.Benchmark.Cli.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Nts.Benchmark.Cli.Tests/Nts.Benchmark.Cli.Tests.csproj" />
+  </Folder>
+</Solution>
